@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7654689492456476031}
   - component: {fileID: 873847980775633640}
   - component: {fileID: -7801043838767658212}
+  - component: {fileID: 6687568327293181921}
   m_Layer: 0
   m_Name: PlayerPrefab
   m_TagString: Untagged
@@ -60,6 +61,7 @@ MonoBehaviour:
   NetworkedBehaviours:
   - {fileID: 873847980775633640}
   - {fileID: -7801043838767658212}
+  - {fileID: 6687568327293181921}
   SimulationBehaviours: []
 --- !u!143 &7654689492456476031
 CharacterController:
@@ -92,6 +94,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  _mesh: {fileID: 3592126437871567122}
+  _JumpCount: 0
+  _Speed: 0
 --- !u!114 &-7801043838767658212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +133,19 @@ MonoBehaviour:
   rotationSpeed: 15
   _IsGrounded: 0
   _Velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &6687568327293181921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4254895351877131526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02647f7f40b8f494e9449d7b266a2f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!1001 &4402446926181760067
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,11 +217,11 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3592126437871567122}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
+  m_Avatar: {fileID: 9000000, guid: ba5173a85368a4f4eb45fbc497be292c, type: 2}
   m_Controller: {fileID: 9100000, guid: 478a37052ee83a845959956c8a0467a6, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
