@@ -54,25 +54,41 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     public void OnInput(NetworkRunner runner, NetworkInput input)
     {
         var data = new NetworkInputData();
+        Vector3 direction = Vector3.zero;
 
         if (Input.GetKey(KeyCode.W))
-            data.direction += LocalPlayer.transform.forward;
+        {
+            direction += LocalPlayer.transform.forward;
+        }
 
         //if (Input.GetKey(KeyCode.S))
-            //data.direction -= LocalPlayer.transform.forward;
+        //{
+        //    direction -= LocalPlayer.transform.forward;
+        //}
 
         if (Input.GetKey(KeyCode.A))
-            data.direction -= LocalPlayer.transform.right/10;
+        {
+            direction += Quaternion.Euler(0, -5, 0) * LocalPlayer.transform.forward * 0.1f;
+        }
 
         if (Input.GetKey(KeyCode.D))
-            data.direction += LocalPlayer.transform.right/10;
+        {
+            direction += Quaternion.Euler(0, 5, 0) * LocalPlayer.transform.forward * 0.1f;
+        }
 
-        if (Input.GetKey(KeyCode.LeftShift))           
+        data.direction = direction.normalized;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
             data.speed = 3;
-        
-        if (Input.GetKey(KeyCode.Space))
-            data.Jump = true;
-        
+        }
+        else
+        {
+            data.speed = 1;
+        }
+
+        data.Jump = Input.GetKey(KeyCode.Space);
+
         input.Set(data);
     }
 
