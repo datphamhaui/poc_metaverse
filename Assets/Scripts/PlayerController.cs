@@ -58,16 +58,16 @@ public class PlayerController : NetworkBehaviour
                 Debug.Log("JumpCount " + JumpCount);
             }
 
-            if (Object.HasInputAuthority)
-            {
-                if (_camera == null)
-                    _camera = Camera.main.transform;
-                Transform t = _mesh.transform;
-                Vector3 p = t.position;
-                _camera.position = p - 5 * t.forward + 5 * Vector3.up;
-                Debug.Log("_camera.position " + _camera.position);
-                _camera.LookAt(p + 2 * Vector3.up);
-            }
+            //if (Object.HasInputAuthority)
+            //{
+            //    if (_camera == null)
+            //        _camera = Camera.main.transform;
+            //    Transform t = _mesh.transform;
+            //    Vector3 p = t.position;
+            //    _camera.position = p - 5 * t.forward + 5 * Vector3.up;
+            //    Debug.Log("_camera.position " + _camera.position);
+            //    _camera.LookAt(p + 2 * Vector3.up);
+            //}
 
 
             // In reality speed can probably be just taken from already existing

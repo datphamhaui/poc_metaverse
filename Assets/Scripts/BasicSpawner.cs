@@ -1,3 +1,4 @@
+using Cinemachine;
 using Fusion;
 using Fusion.Sockets;
 using System;
@@ -9,6 +10,11 @@ using UnityEngine.SceneManagement;
 public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
 {
     [SerializeField] private NetworkPrefabRef _playerPrefab;
+
+    public CinemachineVirtualCamera _virtualCamera;
+
+    private NetworkObject LocalPlayer;
+
     private Dictionary<PlayerRef, NetworkObject> _spawnedCharacters = new Dictionary<PlayerRef, NetworkObject>();
 
     public void OnConnectedToServer(NetworkRunner runner)
@@ -50,16 +56,16 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         var data = new NetworkInputData();
 
         if (Input.GetKey(KeyCode.W))
-            data.direction += Vector3.forward;
+            data.direction += LocalPlayer.transform.forward;
 
-        if (Input.GetKey(KeyCode.S))
-            data.direction += Vector3.back;
+        //if (Input.GetKey(KeyCode.S))
+            //data.direction -= LocalPlayer.transform.forward;
 
         if (Input.GetKey(KeyCode.A))
-            data.direction += Vector3.left;
+            data.direction -= LocalPlayer.transform.right/10;
 
         if (Input.GetKey(KeyCode.D))
-            data.direction += Vector3.right;
+            data.direction += LocalPlayer.transform.right/10;
 
         if (Input.GetKey(KeyCode.LeftShift))           
             data.speed = 3;
@@ -83,7 +89,12 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
             Vector3 spawnPosition = new Vector3((player.RawEncoded % runner.Config.Simulation.DefaultPlayers) * 3,3.5f, 0);
             NetworkObject networkPlayerObject = runner.Spawn(_playerPrefab, spawnPosition, Quaternion.identity, player);
             _spawnedCharacters.Add(player, networkPlayerObject);
-
+            if (player == runner.LocalPlayer)
+            {
+                _virtualCamera.Follow = networkPlayerObject.transform.GetChild(1).transform;
+                LocalPlayer = networkPlayerObject;
+                Debug.Log("Local Player");
+            }
         }
     }
 
@@ -105,7 +116,6 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
     public void OnSceneLoadDone(NetworkRunner runner)
     {
         Debug.Log("SceneLoadDone");
-
     }
 
     public void OnSceneLoadStart(NetworkRunner runner)
