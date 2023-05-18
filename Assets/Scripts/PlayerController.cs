@@ -64,7 +64,7 @@ public class PlayerController : NetworkBehaviour
                     _camera = Camera.main.transform;
                 Transform t = _mesh.transform;
                 Vector3 p = t.position;
-                _camera.position = p - 10 * t.forward + 5 * Vector3.up;
+                _camera.position = p - 5 * t.forward + 5 * Vector3.up;
                 Debug.Log("_camera.position " + _camera.position);
                 _camera.LookAt(p + 2 * Vector3.up);
             }
