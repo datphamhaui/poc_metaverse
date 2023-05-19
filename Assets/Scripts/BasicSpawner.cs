@@ -142,7 +142,7 @@ public class BasicSpawner : MonoBehaviour, INetworkRunnerCallbacks
         await _runner.StartGame(new StartGameArgs()
         {
             GameMode = mode,
-            SessionName = "VarRoom",
+            SessionName = "VarRoom11",
             Scene = SceneManager.GetActiveScene().buildIndex,
             SceneManager = gameObject.AddComponent<NetworkSceneManagerDefault>()
         });
