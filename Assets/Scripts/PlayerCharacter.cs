@@ -1,9 +1,13 @@
+using Cinemachine;
 using Fusion;
 using UnityEngine;
 using static UnityEngine.EventSystems.PointerEventData;
 
 public class PlayerCharacter : NetworkBehaviour
 {
+    [Networked, HideInInspector]
+    public Vector2 direction { get; set; }
+
     [Networked, HideInInspector]
     public float speed { get; set; }
     public float interpolatedSpeed => _speedInterpolator.Value;
@@ -13,6 +17,7 @@ public class PlayerCharacter : NetworkBehaviour
     public override void Spawned()
     {
         _speedInterpolator = GetInterpolator<float>(nameof(speed));
+        CameraSetup();
     }
 
     public override void FixedUpdateNetwork()
@@ -30,6 +35,21 @@ public class PlayerCharacter : NetworkBehaviour
 
     private void ProcessInput(PlayerInputData input)
     {
-        speed = input.MoveDirection.magnitude;
+        speed = input.MoveDirection.sqrMagnitude;
+        direction = input.MoveDirection;
+    }
+
+    private void CameraSetup()
+    {
+        if (Object.HasInputAuthority)
+        {
+            CinemachineFreeLook freelookCamera = FindObjectOfType<CinemachineFreeLook>();
+
+            if (freelookCamera != null)
+            {
+                freelookCamera.LookAt = transform;
+                freelookCamera.Follow = transform;
+            }
+        }
     }
 }

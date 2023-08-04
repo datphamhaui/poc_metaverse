@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Camera _mainCamera;
     [SerializeField] private Vector3 _direction;
     private CharacterController _characterController;
+    private PlayerCharacter _playerCharacter;
 
     private float _gravity = -9.810f;
     private float _gravityMultiplier = 3.0f;
@@ -23,8 +24,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _mainCamera = Camera.main;
         _characterController = GetComponent<CharacterController>();
+        _playerCharacter = GetComponent<PlayerCharacter>();
         CursorConfig();
-        CameraSetup();
     }
 
     private void Update()
@@ -42,21 +43,10 @@ public class PlayerMovement : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void CameraSetup() 
-    {
-        CinemachineFreeLook freelookCamera = FindObjectOfType<CinemachineFreeLook>();
-
-        if (freelookCamera != null ) 
-        {
-            freelookCamera.LookAt = transform;
-            freelookCamera.Follow = transform;
-        }
-    }
-
     private void InputProcess()
     {
-        _inputX = Input.GetAxis("Horizontal");
-        _inputY = Input.GetAxis("Vertical");
+        _inputX = _playerCharacter.direction.x;
+        _inputY = _playerCharacter.direction.y;
     }
 
     private void DirectionCalculator()

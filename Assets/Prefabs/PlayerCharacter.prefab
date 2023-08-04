@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 1
   _nodes:
-  - Clip: {fileID: 7400000, guid: f4b0f8988d4983a48af783ce4dcc6e02, type: 3}
+  - Clip: {fileID: 7400006, guid: e5366f5926c8dd949a168f5f0095a4d3, type: 3}
     Speed: 1
     Position: {x: 0, y: 0}
   - Clip: {fileID: 7400098, guid: e5366f5926c8dd949a168f5f0095a4d3, type: 3}
