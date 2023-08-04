@@ -27,11 +27,6 @@ public class PlayerMovement : MonoBehaviour
         CameraSetup();
     }
 
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
         InputProcess();
