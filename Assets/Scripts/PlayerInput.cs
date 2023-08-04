@@ -1,9 +1,17 @@
 using Fusion;
 using UnityEngine;
+using static UnityEngine.EventSystems.PointerEventData;
+
+public enum EInputButtons
+{
+    Dancing = 0,
+}
 
 public struct PlayerInputData : INetworkInput
 {
     public Vector2 MoveDirection;
+    public NetworkButtons Buttons;
+    public bool Dancing { get { return Buttons.IsSet(EInputButtons.Dancing); } set { Buttons.Set((int)EInputButtons.Dancing, value); } }
 }
 
 public class PlayerInput : SimulationBehaviour, ISpawned, IDespawned, IBeforeUpdate
@@ -53,6 +61,11 @@ public class PlayerInput : SimulationBehaviour, ISpawned, IDespawned, IBeforeUpd
 
     private void ProcessKeyboardInput()
     {
+        if (Input.GetKey(KeyCode.Space) == true)
+        {
+            _cachedInput.Dancing = true;
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 

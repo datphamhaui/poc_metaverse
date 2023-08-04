@@ -13,10 +13,17 @@ public class PlayerCharacter : NetworkBehaviour
     public float interpolatedSpeed => _speedInterpolator.Value;
 
     private Interpolator<float> _speedInterpolator;
+    [Networked]
+    private NetworkButtons _lastButtonsInput { get; set; }
+
+    public bool HasDancing { get; private set; }
+
+    private PlayerMovement _playerMovement;
 
     public override void Spawned()
     {
         _speedInterpolator = GetInterpolator<float>(nameof(speed));
+        _playerMovement = GetComponent<PlayerMovement>();
         CameraSetup();
     }
 
@@ -37,6 +44,7 @@ public class PlayerCharacter : NetworkBehaviour
     {
         speed = input.MoveDirection.sqrMagnitude;
         direction = input.MoveDirection;
+        HasDancing = input.Buttons.WasPressed(_lastButtonsInput, EInputButtons.Dancing) && speed <= .0f;
     }
 
     private void CameraSetup()

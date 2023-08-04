@@ -94,6 +94,54 @@ MonoBehaviour:
     Speed: 1
     Position: {x: -1, y: 0}
   _isLooping: 1
+--- !u!1 &2516511606257560133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8812890186399134189}
+  - component: {fileID: 2801015241612822198}
+  m_Layer: 0
+  m_Name: DancingLayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8812890186399134189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2516511606257560133}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2554748694714495270}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2801015241612822198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2516511606257560133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37c98e89c7b8dde44a0b19ca762d3670, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _node:
+    Clip: {fileID: 7400000, guid: bfc227499ad76ee4883b27eed6be4bfa, type: 3}
+    Speed: 1
+    IsLooping: 0
 --- !u!1 &5586935346120714343
 GameObject:
   m_ObjectHideFlags: 0
@@ -125,6 +173,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8390750669544828726}
+  - {fileID: 8812890186399134189}
   m_Father: {fileID: 5099820818434148369}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6458606672444700937
@@ -290,6 +339,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  _direction: {x: 0, y: 0}
   _speed: 0
 --- !u!114 &8834144190857343917
 MonoBehaviour:
@@ -391,6 +441,10 @@ PrefabInstance:
     - target: {fileID: 6686075590842506944, guid: 3fcee3cf3da33b347bdfebf56d48c0d4, type: 3}
       propertyPath: m_Controller
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6686075590842506944, guid: 3fcee3cf3da33b347bdfebf56d48c0d4, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
