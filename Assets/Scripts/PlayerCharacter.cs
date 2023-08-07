@@ -17,11 +17,27 @@ public class PlayerCharacter : NetworkBehaviour
     private NetworkButtons _lastButtonsInput { get; set; }
 
     public bool HasDancing { get; private set; }
-
+    private NetworkCulling _networkCulling;
     private PlayerMovement _playerMovement;
+    private CharacterController _characterController;
 
-    public GameObject girl;
+    public GameObject characterMeshObjects => _characterMeshObjects;
 
+   [SerializeField] private GameObject _characterMeshObjects;
+
+    private void Awake()
+    {
+        _networkCulling = GetComponent<NetworkCulling>();
+        _characterController = GetComponent<CharacterController>();
+        _networkCulling.updated += OnCullingUpdated;
+    }
+
+    private void OnCullingUpdated(bool isCulled)
+    {
+        bool isActive = isCulled == false;
+
+        characterMeshObjects.SetActive(isActive);
+    }
     public override void Spawned()
     {
         _speedInterpolator = GetInterpolator<float>(nameof(speed));

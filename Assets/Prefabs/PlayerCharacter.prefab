@@ -343,7 +343,7 @@ MonoBehaviour:
   _interpolationDataSource: 0
   _direction: {x: 0, y: 0}
   _speed: 0
-  girl: {fileID: 4950772889180441552}
+  _characterMeshObjects: {fileID: 4950772889180441552}
 --- !u!114 &8834144190857343917
 MonoBehaviour:
   m_ObjectHideFlags: 0
