@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 8834144190857343917}
   - component: {fileID: 411312855921818306}
   - component: {fileID: 5854638922389789751}
+  - component: {fileID: 6145910854047407786}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -270,7 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: -1552182283, guid: e725a070cec140c4caffb81624c8c787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ObjectInterest: 1
+  ObjectInterest: 0
   DefaultInterestGroups: []
   DestroyWhenStateAuthorityLeaves: 1
   AllowStateAuthorityOverride: 0
@@ -284,6 +285,7 @@ MonoBehaviour:
   - {fileID: 5590194870395592303}
   - {fileID: 8834144190857343917}
   - {fileID: 411312855921818306}
+  - {fileID: 6145910854047407786}
   SimulationBehaviours:
   - {fileID: 6948846219237071878}
 --- !u!114 &3688783563331661169
@@ -341,6 +343,7 @@ MonoBehaviour:
   _interpolationDataSource: 0
   _direction: {x: 0, y: 0}
   _speed: 0
+  girl: {fileID: 4950772889180441552}
 --- !u!114 &8834144190857343917
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +389,19 @@ MonoBehaviour:
   _velocity: 0
   _speed: 3
   desiredRotationSpeed: 0.1
+--- !u!114 &6145910854047407786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8920344971565066992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94b902010229f1746ab747a6ee0de130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
 --- !u!1001 &5032464295487755728
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -454,6 +470,11 @@ PrefabInstance:
 --- !u!95 &1810255521520913168 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6686075590842506944, guid: 3fcee3cf3da33b347bdfebf56d48c0d4, type: 3}
+  m_PrefabInstance: {fileID: 5032464295487755728}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4950772889180441552 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 99723691547319808, guid: 3fcee3cf3da33b347bdfebf56d48c0d4, type: 3}
   m_PrefabInstance: {fileID: 5032464295487755728}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &5764463601994453354 stripped
