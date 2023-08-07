@@ -47,7 +47,7 @@ public sealed class NetworkCulling : NetworkBehaviour
                 lastReceiveTickThreshold = serverState.Tick - _tickRate * 2;
             }
 
-            if (Object.LastReceiveTick < lastReceiveTickThreshold)
+            if (Object.LastReceiveTick < lastReceiveTickThreshold - 1.90f)
             {
                 isCulled = true;
             }
