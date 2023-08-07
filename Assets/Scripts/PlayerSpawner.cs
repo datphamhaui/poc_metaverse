@@ -13,15 +13,13 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined, ISimulationEnte
         }
     }
 
-    public void SimulationEnter()
+    void ISimulationEnter.SimulationEnter()
     {
         Debug.Log("SimulationEnter");
-        //girl.SetActive(true);
     }
 
-    public void SimulationExit()
+    void ISimulationExit.SimulationExit()
     {
         Debug.Log("SimulationExit");
-        //girl.SetActive(false);
     }
 }

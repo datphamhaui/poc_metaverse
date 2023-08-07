@@ -3,7 +3,7 @@ using Fusion;
 using UnityEngine;
 using static UnityEngine.EventSystems.PointerEventData;
 
-public class PlayerCharacter : NetworkBehaviour, ISimulationEnter, ISimulationExit
+public class PlayerCharacter : NetworkBehaviour
 {
     [Networked, HideInInspector]
     public Vector2 direction { get; set; }
@@ -21,18 +21,6 @@ public class PlayerCharacter : NetworkBehaviour, ISimulationEnter, ISimulationEx
     private PlayerMovement _playerMovement;
 
     public GameObject girl;
-
-    public void SimulationEnter()
-    {
-        Debug.Log("SimulationEnter");
-        girl.SetActive(true);
-    }
-
-    public void SimulationExit()
-    {
-        Debug.Log("SimulationExit");
-        girl.SetActive(false);
-    }
 
     public override void Spawned()
     {

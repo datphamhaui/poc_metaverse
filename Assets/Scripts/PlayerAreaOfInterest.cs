@@ -1,20 +1,27 @@
 using Fusion;
-using System.Diagnostics;
-using UnityEngine;
+using  UnityEngine;
 
-public class PlayerAreaOfInterest : NetworkBehaviour
+public class PlayerAreaOfInterest : NetworkBehaviour, ISimulationEnter, ISimulationExit
 {
-    private float range = 2f;
+    private float radius = 2f;
 
     public override void FixedUpdateNetwork()
     {
-        //if (Runner.IsServer)
+        var target = Object.InputAuthority;
+
+        if (target.IsValid)
         {
-            var controller = Object.InputAuthority;
-            if (controller.IsValid)
-            {
-                Runner.AddPlayerAreaOfInterest(controller, transform.position, range);
-            }
+            Runner.AddPlayerAreaOfInterest(target, transform.position, radius);
         }
+    }
+
+    public void SimulationEnter()
+    {
+        Debug.Log("SimulationEnter");
+    }
+
+    public void SimulationExit()
+    {
+        Debug.Log("SimulationExit");
     }
 }
