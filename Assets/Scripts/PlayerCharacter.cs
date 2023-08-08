@@ -23,11 +23,7 @@ public class PlayerCharacter : NetworkBehaviour
     private PlayerMovement _playerMovement;
     private CharacterController _characterController;
     private AnimationController _animationController;
-
-    private GameObject _characterMeshObjects;
-
-    [SerializeField] private GameObject[] _listCharacterMeshObjects;
-    [SerializeField] private Animator[] _listCharacterAnimators;
+    [SerializeField] private GameObject _characterMeshObjects;
 
     private void Awake()
     {
@@ -47,15 +43,16 @@ public class PlayerCharacter : NetworkBehaviour
     {
         _speedInterpolator = GetInterpolator<float>(nameof(speed));
         _playerMovement = GetComponent<PlayerMovement>();
-        CameraSetup();
-        //SetUpPlayerCharacter(Object.InputAuthority);
 
-        if (!IsProxy) 
+        CameraSetup();
+
+        if (!IsProxy)
         {
-            ChatGui chatgui = FindObjectOfType<ChatGui>();
+            NamePickGui chatgui = FindObjectOfType<NamePickGui>();
             if (chatgui != null)
             {
-                chatgui.ShowConnectPanel();
+                //chatgui.ShowConnectPanel();
+                chatgui.StartChat();
             }
         }
     }
@@ -78,22 +75,6 @@ public class PlayerCharacter : NetworkBehaviour
         speed = input.MoveDirection.sqrMagnitude;
         direction = input.MoveDirection;
         HasDancing = input.Buttons.WasPressed(_lastButtonsInput, EInputButtons.Dancing) && speed <= .0f;
-    }
-
-    private void SetUpPlayerCharacter(int id)
-    {
-        if (id % 2 != 0)
-        {
-            _listCharacterMeshObjects[1].SetActive(true);
-            _animationController.SetAnimator(_listCharacterAnimators[1]);
-            _characterMeshObjects = _listCharacterMeshObjects[1];
-        }
-        else
-        {
-            _listCharacterMeshObjects[0].SetActive(true);
-            _characterMeshObjects = _listCharacterMeshObjects[0];
-            _animationController.SetAnimator(_listCharacterAnimators[0]);
-        }
     }
 
     private void CameraSetup()

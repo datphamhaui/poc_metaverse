@@ -38,14 +38,15 @@ namespace Photon.Chat.Demo
         {
             if (Input.GetKey(KeyCode.Return) || Input.GetKey(KeyCode.KeypadEnter))
             {
-                this.StartChat();
+                //this.StartChat();
             }
         }
 
         public void StartChat()
         {
             ChatGui chatNewComponent = FindObjectOfType<ChatGui>();
-            chatNewComponent.UserName = this.idInput.text.Trim();
+            //chatNewComponent.UserName = this.idInput.text.Trim();
+            chatNewComponent.UserName = Random.Range(100,201).ToString();
             chatNewComponent.Connect();
             this.enabled = false;
 

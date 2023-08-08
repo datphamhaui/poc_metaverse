@@ -9,7 +9,9 @@ public class PlayerSpawner : SimulationBehaviour, IPlayerJoined
     {
         if (player == Runner.LocalPlayer)
         {
-            Runner.Spawn(PlayerPrefab, new Vector3(-0.12376430f, 3.476770f, 5.5306730f), Quaternion.identity, player);
+            // Garden
+            //Runner.Spawn(PlayerPrefab, new Vector3(-0.12376430f, 3.476770f, 5.5306730f), Quaternion.identity, player);
+            Runner.Spawn(PlayerPrefab, new Vector3(0.023993490f, 5.5725440f, 3.6215210f), Quaternion.identity, player);
         }
     }
 }
