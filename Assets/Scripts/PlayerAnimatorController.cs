@@ -1,5 +1,7 @@
 using Fusion;
+using Fusion.Animations;
 using UnityEngine;
+
 public class PlayerAnimatorController : NetworkBehaviour
 {
     private PlayerCharacter _playerController;
@@ -20,7 +22,6 @@ public class PlayerAnimatorController : NetworkBehaviour
         {
             _playerLocomotionState.Activate(0.15f);
         }
-       
     }
 
     protected void Awake()

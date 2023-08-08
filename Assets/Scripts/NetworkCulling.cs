@@ -7,7 +7,7 @@ public sealed class NetworkCulling : NetworkBehaviour
     public Action<bool> updated;
     public bool isCulled => _isCulled;
 
-    private float _radius = 2f;
+    private float _radius = 15f;
     private int _tickRate;
     private bool _isCulled;
 
