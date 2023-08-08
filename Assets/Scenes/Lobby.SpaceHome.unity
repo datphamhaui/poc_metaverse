@@ -404,6 +404,14 @@ PrefabInstance:
       propertyPath: missingAppIdErrorPanel
       value: 
       objectReference: {fileID: 1284291546}
+    - target: {fileID: 7667532304989597269, guid: 90b11d816763741489b64276b6047897, type: 3}
+      propertyPath: ChannelsToJoinOnConnect.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7667532304989597269, guid: 90b11d816763741489b64276b6047897, type: 3}
+      propertyPath: ChannelsToJoinOnConnect.Array.data[0]
+      value: Publish
+      objectReference: {fileID: 0}
     - target: {fileID: 8124178313894793683, guid: 90b11d816763741489b64276b6047897, type: 3}
       propertyPath: m_IsActive
       value: 0

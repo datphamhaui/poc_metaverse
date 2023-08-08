@@ -1,6 +1,7 @@
 using Cinemachine;
 using Fusion;
 using Fusion.Animations;
+using Photon.Chat.Demo;
 using UnityEngine;
 using static UnityEngine.EventSystems.PointerEventData;
 
@@ -48,6 +49,15 @@ public class PlayerCharacter : NetworkBehaviour
         _playerMovement = GetComponent<PlayerMovement>();
         CameraSetup();
         //SetUpPlayerCharacter(Object.InputAuthority);
+
+        if (!IsProxy) 
+        {
+            ChatGui chatgui = FindObjectOfType<ChatGui>();
+            if (chatgui != null)
+            {
+                chatgui.ShowConnectPanel();
+            }
+        }
     }
 
     public override void FixedUpdateNetwork()

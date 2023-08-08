@@ -142,7 +142,7 @@ namespace Photon.Chat.Demo
             bool appIdPresent = !string.IsNullOrEmpty(this.chatAppSettings.AppIdChat);
 
             this.missingAppIdErrorPanel.SetActive(!appIdPresent);
-            this.UserIdFormPanel.gameObject.SetActive(appIdPresent);
+            //this.UserIdFormPanel.gameObject.SetActive(appIdPresent);
 
             if (!appIdPresent)
             {
@@ -150,8 +150,14 @@ namespace Photon.Chat.Demo
             }
         }
 
+        public void ShowConnectPanel() 
+        {
+            UserIdFormPanel.gameObject.SetActive(true);
+        }
+
         public void Connect()
         {
+            Debug.Log("Connect");
             this.UserIdFormPanel.gameObject.SetActive(false);
 
             this.chatClient = new ChatClient(this);
@@ -348,10 +354,12 @@ namespace Photon.Chat.Demo
             {
                 if (doingPrivateChat)
                 {
+                    Debug.Log("Send private");
                     this.chatClient.SendPrivateMessage(privateChatTarget, inputLine);
                 }
                 else
                 {
+                    Debug.Log("Send public");
                     this.chatClient.PublishMessage(this.selectedChannelName, inputLine);
                 }
             }
@@ -435,7 +443,7 @@ namespace Photon.Chat.Demo
             // in this demo, we simply send a message into each channel. This is NOT a must have!
             foreach (string channel in channels)
             {
-                this.chatClient.PublishMessage(channel, "says 'hi'."); // you don't HAVE to send a msg on join but you could.
+                //this.chatClient.PublishMessage(channel, "says 'hi'."); // you don't HAVE to send a msg on join but you could.
 
                 if (this.ChannelToggleToInstantiate != null)
                 {
