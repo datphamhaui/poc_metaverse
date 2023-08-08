@@ -61,7 +61,7 @@ public class PlayerInput : SimulationBehaviour, ISpawned, IDespawned, IBeforeUpd
 
     private void ProcessKeyboardInput()
     {
-        if (Input.GetKey(KeyCode.Space) == true)
+        if (Input.GetKey(KeyCode.P) == true)
         {
             _cachedInput.Dancing = true;
         }

@@ -43,7 +43,7 @@
         "InputDataWordCount": 0,
         "TickRate": 60,
         "MaxPrediction": 60,
-        "DefaultPlayers": 100,
+        "DefaultPlayers": 60,
         "ReplicationMode": 1,
         "ObjectInterest": true,
         "ServerPacketInterval": 1,

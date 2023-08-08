@@ -47,7 +47,7 @@ public class PlayerCharacter : NetworkBehaviour
         _speedInterpolator = GetInterpolator<float>(nameof(speed));
         _playerMovement = GetComponent<PlayerMovement>();
         CameraSetup();
-        SetUpPlayerCharacter(Object.InputAuthority);
+        //SetUpPlayerCharacter(Object.InputAuthority);
     }
 
     public override void FixedUpdateNetwork()
