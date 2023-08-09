@@ -21,7 +21,7 @@ public class NetworkBloomOrb : NetworkBehaviour
 
     public void Init(Vector3 forward)
     {
-        life = TickTimer.CreateFromSeconds(Runner, 5.0f);
+        life = TickTimer.CreateFromSeconds(Runner, 2.0f);
         GetComponent<Rigidbody>().velocity = forward;
     }
 

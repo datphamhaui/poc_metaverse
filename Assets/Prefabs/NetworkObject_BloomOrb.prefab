@@ -14524,37 +14524,6 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!1 &5123767258070254078
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3365056240531392182}
-  m_Layer: 0
-  m_Name: Sphere
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3365056240531392182
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5123767258070254078}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 3258983660518446338}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5397043832833172115
 GameObject:
   m_ObjectHideFlags: 0
@@ -14591,7 +14560,6 @@ Transform:
   m_Children:
   - {fileID: 5466128557499309760}
   - {fileID: 6065762050021569798}
-  - {fileID: 3365056240531392182}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &7756929132348658220
@@ -14635,7 +14603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _interpolationDataSource: 2
   InterpolationSpace: 0
-  InterpolationTarget: {fileID: 3365056240531392182}
+  InterpolationTarget: {fileID: 5466128557499309760}
   InterpolateErrorCorrection: 1
   InterpolatedErrorCorrectionSettings:
     MinRate: 3.3
@@ -14710,6 +14678,8 @@ MonoBehaviour:
   _interpolationDataSource: 2
   _explosionFX: {fileID: 6069146534787345680}
   _bloomOrbVisual: {fileID: 3524238284766935635}
+  _networkedDestroyed:
+    _value: 0
 --- !u!1001 &6069955009084884498
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,7 +14,7 @@ public class NetworkHubHeath : NetworkBehaviour
 
     public override void Spawned()
     {
-
+        
     }
 
     public override void FixedUpdateNetwork()

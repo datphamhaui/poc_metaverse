@@ -104,13 +104,13 @@ public class PlayerCharacter : NetworkBehaviour
         {
             if ((input.buttons & PlayerInputData.MOUSEBUTTON1) != 0)
             {
-                delay = TickTimer.CreateFromSeconds(Runner, 5.0f);
-                SpawnNetworkHubHeath();
+                delay = TickTimer.CreateFromSeconds(Runner, 1.0f);
+                SpawnNetworkBloomOrb();
             }
             else if ((input.buttons & PlayerInputData.MOUSEBUTTON2) != 0)
             {
-                delay = TickTimer.CreateFromSeconds(Runner, 5.0f);
-                SpawnNetworkBloomOrb();
+                delay = TickTimer.CreateFromSeconds(Runner, 2.0f);
+                SpawnNetworkHubHeath();
             }
         }
     }
