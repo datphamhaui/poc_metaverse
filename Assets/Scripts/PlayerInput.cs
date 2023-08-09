@@ -9,6 +9,8 @@ public enum EInputButtons
 
 public struct PlayerInputData : INetworkInput
 {
+    public const byte MOUSEBUTTON1 = 0x01;
+    public byte buttons;
     public Vector2 MoveDirection;
     public NetworkButtons Buttons;
     public bool Dancing { get { return Buttons.IsSet(EInputButtons.Dancing); } set { Buttons.Set((int)EInputButtons.Dancing, value); } }
@@ -18,6 +20,12 @@ public class PlayerInput : SimulationBehaviour, ISpawned, IDespawned, IBeforeUpd
 {
     private PlayerInputData _cachedInput;
     private bool _resetCachedInput;
+    private bool _mouseButton0;
+
+    private void Update()
+    {
+        _mouseButton0 = _mouseButton0 | Input.GetMouseButton(0);
+    }
 
     void ISpawned.Spawned()
     {
@@ -73,5 +81,12 @@ public class PlayerInput : SimulationBehaviour, ISpawned, IDespawned, IBeforeUpd
         {
             _cachedInput.MoveDirection = new Vector2(horizontal, vertical);
         }
+
+        if (_mouseButton0)
+        {
+            _cachedInput.buttons |= PlayerInputData.MOUSEBUTTON1;
+        }
+
+        _mouseButton0 = false;
     }
 }
