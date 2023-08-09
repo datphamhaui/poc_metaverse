@@ -10,6 +10,7 @@ public enum EInputButtons
 public struct PlayerInputData : INetworkInput
 {
     public const byte MOUSEBUTTON1 = 0x01;
+    public const byte MOUSEBUTTON2 = 0x02;
     public byte buttons;
     public Vector2 MoveDirection;
     public NetworkButtons Buttons;
@@ -20,11 +21,13 @@ public class PlayerInput : SimulationBehaviour, ISpawned, IDespawned, IBeforeUpd
 {
     private PlayerInputData _cachedInput;
     private bool _resetCachedInput;
-    private bool _mouseButton0;
+    private bool _mouseButton1;
+    private bool _mouseButton2;
 
     private void Update()
     {
-        _mouseButton0 = _mouseButton0 | Input.GetMouseButton(0);
+        _mouseButton1 = _mouseButton1 | Input.GetMouseButton(0);
+        _mouseButton2 = _mouseButton2 || Input.GetMouseButton(1);
     }
 
     void ISpawned.Spawned()
@@ -82,11 +85,16 @@ public class PlayerInput : SimulationBehaviour, ISpawned, IDespawned, IBeforeUpd
             _cachedInput.MoveDirection = new Vector2(horizontal, vertical);
         }
 
-        if (_mouseButton0)
+        if (_mouseButton1)
         {
             _cachedInput.buttons |= PlayerInputData.MOUSEBUTTON1;
         }
+        if (_mouseButton2)
+        {
+            _cachedInput.buttons |= PlayerInputData.MOUSEBUTTON2;
+        }
 
-        _mouseButton0 = false;
+        _mouseButton1 = false;
+        _mouseButton2 = false;
     }
 }

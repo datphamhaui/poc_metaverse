@@ -21,7 +21,9 @@ public class PlayerCharacter : NetworkBehaviour
     [Networked]
     private NetworkButtons _lastButtonsInput { get; set; }
     [SerializeField] private NetworkHubHeath _heathHub;
+    [SerializeField] private NetworkBloomOrb _bloomOrb;
     [SerializeField] private Transform _heathHubPosition;
+    [SerializeField] private Transform _bloomOrbPosition;
 
     public bool HasDancing { get; private set; }
     private NetworkCulling _networkCulling;
@@ -50,6 +52,14 @@ public class PlayerCharacter : NetworkBehaviour
         Runner.Spawn(_heathHub, _heathHubPosition.position, Quaternion.identity, Object.InputAuthority, (runner, o) =>
         {
             o.GetBehaviour<NetworkHubHeath>().Init();
+        });
+    }
+
+    private void SpawnNetworkBloomOrb()
+    {
+        Runner.Spawn(_bloomOrb, _bloomOrbPosition.position + transform.forward, Quaternion.LookRotation(transform.forward), Object.InputAuthority, (runner, o) =>
+        {
+            o.GetBehaviour<NetworkBloomOrb>().Init(transform.forward * 10.0f);
         });
     }
 
@@ -96,6 +106,11 @@ public class PlayerCharacter : NetworkBehaviour
             {
                 delay = TickTimer.CreateFromSeconds(Runner, 5.0f);
                 SpawnNetworkHubHeath();
+            }
+            else if ((input.buttons & PlayerInputData.MOUSEBUTTON2) != 0)
+            {
+                delay = TickTimer.CreateFromSeconds(Runner, 5.0f);
+                SpawnNetworkBloomOrb();
             }
         }
     }

@@ -2139,6 +2139,37 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.0011474341, y: 0.020145595, z: 1.2292626}
     m_Extent: {x: 0.49461597, y: 0.21270326, z: 0.34020394}
   m_DirtyAABB: 0
+--- !u!1 &3376364280954224574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5225204668303987775}
+  m_Layer: 0
+  m_Name: BloomOrbPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5225204668303987775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3376364280954224574}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.416, z: 0.154}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8930567907159397084}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3377281978080512239
 GameObject:
   m_ObjectHideFlags: 0
@@ -4483,6 +4514,7 @@ Transform:
   - {fileID: 3567991535781420647}
   - {fileID: 8512567998325219109}
   - {fileID: 3179685847898618021}
+  - {fileID: 5225204668303987775}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &5814195427989170515
@@ -4596,7 +4628,9 @@ MonoBehaviour:
   _direction: {x: 0, y: 0}
   _speed: 0
   _heathHub: {fileID: -2388520388909868989, guid: ccfb27ac729b8964eb764252d4c5df76, type: 3}
+  _bloomOrb: {fileID: 4297035605391015318, guid: a28f0cc4fe154ad49b195a122b358fc3, type: 3}
   _heathHubPosition: {fileID: 3179685847898618021}
+  _bloomOrbPosition: {fileID: 5225204668303987775}
   _characterMeshObjects: {fileID: 4788950252679945218}
 --- !u!114 &9139562756795560347
 MonoBehaviour:
