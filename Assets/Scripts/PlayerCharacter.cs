@@ -24,7 +24,9 @@ public class PlayerCharacter : NetworkBehaviour
     [SerializeField] private NetworkBloomOrb _bloomOrb;
     [SerializeField] private Transform _heathHubPosition;
     [SerializeField] private Transform _bloomOrbPosition;
-
+    [SerializeField] private GameObject _vrUI;
+    [SerializeField] private GameObject _cameraMain;
+    bool _stopMove;
     public bool HasDancing { get; private set; }
     private NetworkCulling _networkCulling;
     private PlayerMovement _playerMovement;
@@ -38,6 +40,12 @@ public class PlayerCharacter : NetworkBehaviour
         _characterController = GetComponent<CharacterController>();
         _animationController = GetComponent<AnimationController>();
         _networkCulling.updated += OnCullingUpdated;
+        _vrUI = GameObject.Find("VR-UI");
+        _cameraMain = Camera.main.gameObject;
+        if (_vrUI != null)
+        {
+            _vrUI.SetActive(false);
+        }
     }
 
     private void OnCullingUpdated(bool isCulled)
@@ -81,6 +89,27 @@ public class PlayerCharacter : NetworkBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (_vrUI != null)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                _stopMove = true;
+                _vrUI.SetActive(true);
+                _cameraMain.SetActive(false);
+                _playerMovement.CursorLock(false);
+            }
+            else if (Input.GetKeyUp(KeyCode.E))
+            {
+                _stopMove = false;
+                _vrUI.SetActive(false);
+                _cameraMain.SetActive(true);
+                _playerMovement.CursorLock();
+            }
+        }
+    }
+
     public override void FixedUpdateNetwork()
     {
         if (IsProxy == true)
@@ -88,7 +117,7 @@ public class PlayerCharacter : NetworkBehaviour
 
         var input = GetInput<PlayerInputData>();
 
-        if (input.HasValue == true)
+        if (input.HasValue == true && !_stopMove)
         {
             ProcessInput(input.Value);
         }

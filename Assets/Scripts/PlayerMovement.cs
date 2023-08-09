@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         _mainCamera = Camera.main;
         _characterController = GetComponent<CharacterController>();
         _playerCharacter = GetComponent<PlayerCharacter>();
-        //CursorConfig();
+        CursorLock();
     }
 
     private void Update()
@@ -37,10 +37,18 @@ public class PlayerMovement : MonoBehaviour
         ApplyMovement();
     }
 
-    private void CursorConfig()
+    public void CursorLock(bool condition = true)
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        if (condition)
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
     }
 
     private void InputProcess()
