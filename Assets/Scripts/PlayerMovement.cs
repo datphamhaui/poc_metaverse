@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         _mainCamera = Camera.main;
         _characterController = GetComponent<CharacterController>();
         _playerCharacter = GetComponent<PlayerCharacter>();
-        CursorConfig();
+        //CursorConfig();
     }
 
     private void Update()
