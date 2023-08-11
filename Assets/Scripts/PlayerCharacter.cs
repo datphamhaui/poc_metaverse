@@ -5,6 +5,7 @@ using Photon.Chat.Demo;
 using Photon.Realtime;
 using POpusCodec.Enums;
 using UnityEngine;
+using UnityEngine.Windows;
 using static UnityEngine.EventSystems.PointerEventData;
 
 public class PlayerCharacter : NetworkBehaviour
@@ -91,16 +92,21 @@ public class PlayerCharacter : NetworkBehaviour
 
     private void Update()
     {
+
+    }
+
+    private void OpenVRUI() 
+    {
         if (_vrUI != null)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.E))
             {
                 _stopMove = true;
                 _vrUI.SetActive(true);
                 _cameraMain.SetActive(false);
                 _playerMovement.CursorLock(false);
             }
-            else if (Input.GetKeyUp(KeyCode.E))
+            else if (UnityEngine.Input.GetKeyUp(KeyCode.E))
             {
                 _stopMove = false;
                 _vrUI.SetActive(false);
@@ -128,7 +134,10 @@ public class PlayerCharacter : NetworkBehaviour
         speed = input.MoveDirection.sqrMagnitude;
         direction = input.MoveDirection;
         HasDancing = input.Buttons.WasPressed(_lastButtonsInput, EInputButtons.Dancing) && speed <= .0f;
+    }
 
+    private void InitBalllAndHub(PlayerInputData input) 
+    {
         if (delay.ExpiredOrNotRunning(Runner))
         {
             if ((input.buttons & PlayerInputData.MOUSEBUTTON1) != 0)

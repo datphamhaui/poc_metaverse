@@ -827,7 +827,7 @@ PlayerSettings:
   webGLPowerPreference: 2
   scriptingDefineSymbols:
     Standalone: FUSION_WEAVER;UNITY_CCU;CURVEDUI_TMP
-    WebGL: FUSION_WEAVER;READY_PLAYER_ME
+    WebGL: FUSION_WEAVER;READY_PLAYER_ME;UNITY_CCU;CURVEDUI_TMP
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
