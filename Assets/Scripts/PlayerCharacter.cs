@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class PlayerCharacter : NetworkBehaviour
 {
+    [Networked]
+    public NetworkBool readyToFyling { get; set; }
     [Networked, HideInInspector]
     public Vector2 direction { get; set; }
 
@@ -25,7 +27,6 @@ public class PlayerCharacter : NetworkBehaviour
     [SerializeField] private GameObject _cameraMain;
     bool _stopMove;
     public bool hasDancing { get; private set; }
-    public bool hasFlying { get; private set; }
 
     private NetworkCulling _networkCulling;
     private PlayerMovement _playerMovement;
@@ -128,8 +129,7 @@ public class PlayerCharacter : NetworkBehaviour
             ProcessInput(input.Value);
         }
     }
-    [Networked]
-    public NetworkBool readyToFyling { get; set; }
+
     private void ProcessInput(PlayerInputData input)
     {
         speed = input.MoveDirection.sqrMagnitude;

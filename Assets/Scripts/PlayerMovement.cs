@@ -73,6 +73,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyGravity()
     {
+        if (_playerCharacter.readyToFyling) return;
+
         if (_characterController.isGrounded && _velocity < .0f)
         {
             _velocity = -1.0f;

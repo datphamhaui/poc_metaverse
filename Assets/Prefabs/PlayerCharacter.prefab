@@ -604,10 +604,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c348afd16a768a0439f2a24aaf5cf4f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _node:
-    Clip: {fileID: 7400000, guid: 5d1fa27443c2f4abeb1d96f963b394c0, type: 3}
+  _speed: 1
+  _nodes:
+  - Clip: {fileID: 7400000, guid: 7d54f8bbd8d18d04892c27fe2f4de8d5, type: 2}
     Speed: 1
-    IsLooping: 1
+    Position: {x: 0, y: 0}
+  - Clip: {fileID: 7400000, guid: 1580c401b3fb0ca4bbd21db24c343671, type: 3}
+    Speed: 1
+    Position: {x: 0, y: 1}
+  - Clip: {fileID: 7400000, guid: 1580c401b3fb0ca4bbd21db24c343671, type: 3}
+    Speed: 1
+    Position: {x: 1, y: 0}
+  - Clip: {fileID: 7400000, guid: 1580c401b3fb0ca4bbd21db24c343671, type: 3}
+    Speed: 1
+    Position: {x: 0, y: -1}
+  - Clip: {fileID: 7400000, guid: 1580c401b3fb0ca4bbd21db24c343671, type: 3}
+    Speed: 1
+    Position: {x: -1, y: 0}
+  _isLooping: 1
 --- !u!1 &809656597940020404
 GameObject:
   m_ObjectHideFlags: 0
@@ -2875,7 +2889,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 53a67e9bf5229764bab6d48c76b30280, type: 3}
   m_Controller: {fileID: 0}
   m_CullingMode: 0
-  m_UpdateMode: 1
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -4794,6 +4808,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
+  _readyToFyling:
+    _value: 0
   _direction: {x: 0, y: 0}
   _speed: 0
   _heathHub: {fileID: -2388520388909868989, guid: ccfb27ac729b8964eb764252d4c5df76, type: 3}
@@ -4803,8 +4819,6 @@ MonoBehaviour:
   _vrUI: {fileID: 0}
   _cameraMain: {fileID: 0}
   _characterMeshObjects: {fileID: 4788950252679945218}
-  _readyToFyling:
-    _value: 0
 --- !u!114 &9139562756795560347
 MonoBehaviour:
   m_ObjectHideFlags: 0
