@@ -7,7 +7,7 @@ public class PlayerFlyingState : BlendTreeState
 
     protected override Vector2 GetBlendPosition(bool interpolated)
     {
-        return new Vector2(0.0f, interpolated == true ? _characterController.interpolatedSpeed : _characterController.speed);
+        return new Vector2(_characterController.direction.x, _characterController.direction.y);
     }
 
     private void Awake()

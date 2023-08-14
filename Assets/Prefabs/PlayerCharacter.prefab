@@ -612,13 +612,13 @@ MonoBehaviour:
   - Clip: {fileID: 7400000, guid: 1580c401b3fb0ca4bbd21db24c343671, type: 3}
     Speed: 1
     Position: {x: 0, y: 1}
-  - Clip: {fileID: 7400000, guid: 1580c401b3fb0ca4bbd21db24c343671, type: 3}
+  - Clip: {fileID: 7400000, guid: cd80916ad9725fb4eac7a21f1d7db46c, type: 2}
     Speed: 1
     Position: {x: 1, y: 0}
   - Clip: {fileID: 7400000, guid: 1580c401b3fb0ca4bbd21db24c343671, type: 3}
     Speed: 1
     Position: {x: 0, y: -1}
-  - Clip: {fileID: 7400000, guid: 1580c401b3fb0ca4bbd21db24c343671, type: 3}
+  - Clip: {fileID: 7400000, guid: e76e0b9240e6d8c4382c789ee37ca61c, type: 2}
     Speed: 1
     Position: {x: -1, y: 0}
   _isLooping: 1

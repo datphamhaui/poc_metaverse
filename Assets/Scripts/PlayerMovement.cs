@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerCharacter _playerCharacter;
 
     private float _gravity = -9.810f;
-    private float _gravityMultiplier = 3.0f;
+    private float _gravityMultiplier = 1.50f;
     [SerializeField] private float _velocity;
 
     private float _inputX;
@@ -62,8 +62,15 @@ public class PlayerMovement : MonoBehaviour
         var forward = _mainCamera.transform.forward;
         var right = _mainCamera.transform.right;
 
-        //forward.y = 0f;
-        //right.y = 0f;
+        if (_playerCharacter.readyToFyling)
+        {
+            _inputY *= 2.0f;
+        }
+        else
+        {
+            forward.y = 0f;
+            right.y = 0f;
+        }
 
         forward.Normalize();
         right.Normalize();
