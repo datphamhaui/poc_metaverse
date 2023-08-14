@@ -12,6 +12,7 @@ public class NetworkBloomOrb : NetworkBehaviour
 
     [Networked(OnChanged = nameof(OnDestroyedChanged))]
     public NetworkBool networkedDestroyed { get; set; }
+
     private bool _predictedDestroyed;
     private bool destroyed
     {

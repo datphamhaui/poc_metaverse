@@ -6,8 +6,19 @@ using UnityEngine;
 
 public class PlayerCharacter : NetworkBehaviour
 {
-    [Networked]
+    [Networked(OnChanged = nameof(OnFormChanged))]
     public NetworkBool readyToFyling { get; set; }
+    public static void OnFormChanged(Changed<NetworkBehaviour> changed)
+    {
+        ((PlayerCharacter)changed.Behaviour)?.OnFormChanged();
+    }
+
+    private void OnFormChanged()
+    {
+        _twinkleParticles[0].SetActive(readyToFyling);
+        _twinkleParticles[1].SetActive(readyToFyling);
+    }
+
     [Networked, HideInInspector]
     public Vector2 direction { get; set; }
 
@@ -25,6 +36,8 @@ public class PlayerCharacter : NetworkBehaviour
     [SerializeField] private Transform _bloomOrbPosition;
     [SerializeField] private GameObject _vrUI;
     [SerializeField] private GameObject _cameraMain;
+    [SerializeField] GameObject[] _twinkleParticles;
+
     bool _stopMove;
     public bool hasDancing { get; private set; }
 
