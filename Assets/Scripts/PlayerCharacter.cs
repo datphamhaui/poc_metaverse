@@ -2,11 +2,7 @@ using Cinemachine;
 using Fusion;
 using Fusion.Animations;
 using Photon.Chat.Demo;
-using Photon.Realtime;
-using POpusCodec.Enums;
 using UnityEngine;
-using UnityEngine.Windows;
-using static UnityEngine.EventSystems.PointerEventData;
 
 public class PlayerCharacter : NetworkBehaviour
 {
@@ -28,9 +24,12 @@ public class PlayerCharacter : NetworkBehaviour
     [SerializeField] private GameObject _vrUI;
     [SerializeField] private GameObject _cameraMain;
     bool _stopMove;
-    public bool HasDancing { get; private set; }
+    public bool hasDancing { get; private set; }
+    public bool hasFlying { get; private set; }
+
     private NetworkCulling _networkCulling;
     private PlayerMovement _playerMovement;
+    private PlayerInput _playerInput;
     private CharacterController _characterController;
     private AnimationController _animationController;
     [SerializeField] private GameObject _characterMeshObjects;
@@ -39,6 +38,7 @@ public class PlayerCharacter : NetworkBehaviour
     {
         _networkCulling = GetComponent<NetworkCulling>();
         _characterController = GetComponent<CharacterController>();
+        _playerInput = GetComponent<PlayerInput>();
         _animationController = GetComponent<AnimationController>();
         _networkCulling.updated += OnCullingUpdated;
         _vrUI = GameObject.Find("VR-UI");
@@ -128,12 +128,20 @@ public class PlayerCharacter : NetworkBehaviour
             ProcessInput(input.Value);
         }
     }
-
+    [Networked]
+    public NetworkBool readyToFyling { get; set; }
     private void ProcessInput(PlayerInputData input)
     {
         speed = input.MoveDirection.sqrMagnitude;
         direction = input.MoveDirection;
-        HasDancing = input.Buttons.WasPressed(_lastButtonsInput, EInputButtons.Dancing) && speed <= .0f;
+        hasDancing = input.Buttons.WasPressed(_lastButtonsInput, EInputButtons.Dancing) && speed <= .0f;
+        if (input.IsDown(PlayerInputData.FYLING))
+        {
+            if (Object.HasInputAuthority)
+            {
+                readyToFyling = !readyToFyling;
+            }
+        }
     }
 
     private void InitBalllAndHub(PlayerInputData input) 

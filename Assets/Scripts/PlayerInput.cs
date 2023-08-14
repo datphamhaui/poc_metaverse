@@ -5,16 +5,25 @@ using static UnityEngine.EventSystems.PointerEventData;
 public enum EInputButtons
 {
     Dancing = 0,
+    Flying = 1
 }
 
 public struct PlayerInputData : INetworkInput
 {
     public const byte MOUSEBUTTON1 = 0x01;
     public const byte MOUSEBUTTON2 = 0x02;
+    public const uint FYLING = 1 << 6;
+    public uint ubuttons;
     public byte buttons;
     public Vector2 MoveDirection;
     public NetworkButtons Buttons;
     public bool Dancing { get { return Buttons.IsSet(EInputButtons.Dancing); } set { Buttons.Set((int)EInputButtons.Dancing, value); } }
+    public bool Flying { get { return Buttons.IsSet(EInputButtons.Flying); } set { Buttons.Set((int)EInputButtons.Flying, value); } }
+
+    public bool IsDown(uint button)
+    {
+        return (ubuttons & button) == button;
+    }
 }
 
 public class PlayerInput : SimulationBehaviour, ISpawned, IDespawned, IBeforeUpdate
@@ -23,11 +32,13 @@ public class PlayerInput : SimulationBehaviour, ISpawned, IDespawned, IBeforeUpd
     private bool _resetCachedInput;
     private bool _mouseButton1;
     private bool _mouseButton2;
+    public bool flyingReady { get; set; }
 
     private void Update()
     {
         _mouseButton1 = _mouseButton1 | Input.GetMouseButton(0);
         _mouseButton2 = _mouseButton2 || Input.GetMouseButton(1);
+        flyingReady = flyingReady || Input.GetKeyDown(KeyCode.F);
     }
 
     void ISpawned.Spawned()
@@ -75,6 +86,13 @@ public class PlayerInput : SimulationBehaviour, ISpawned, IDespawned, IBeforeUpd
         if (Input.GetKey(KeyCode.P) == true)
         {
             _cachedInput.Dancing = true;
+        }
+
+        if (flyingReady)
+        {
+
+            flyingReady = false;
+            _cachedInput.ubuttons |= PlayerInputData.FYLING;
         }
 
         float horizontal = Input.GetAxis("Horizontal");
