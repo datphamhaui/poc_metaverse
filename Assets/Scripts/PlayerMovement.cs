@@ -62,8 +62,8 @@ public class PlayerMovement : MonoBehaviour
         var forward = _mainCamera.transform.forward;
         var right = _mainCamera.transform.right;
 
-        forward.y = 0f;
-        right.y = 0f;
+        //forward.y = 0f;
+        //right.y = 0f;
 
         forward.Normalize();
         right.Normalize();
