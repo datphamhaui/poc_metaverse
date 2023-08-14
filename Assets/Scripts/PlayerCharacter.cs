@@ -15,8 +15,14 @@ public class PlayerCharacter : NetworkBehaviour
 
     private void OnFormChanged()
     {
-        _twinkleParticles[0].SetActive(readyToFyling);
-        _twinkleParticles[1].SetActive(readyToFyling);
+
+        foreach (var particle in _twinkleParticles)
+        {
+            if (particle != null)
+            {
+                particle.SetActive(readyToFyling);
+            }
+        }
     }
 
     [Networked, HideInInspector]
