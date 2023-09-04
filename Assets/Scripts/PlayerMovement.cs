@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
         _mainCamera = Camera.main;
         _characterController = GetComponent<CharacterController>();
         _playerCharacter = GetComponent<PlayerCharacter>();
-        CursorLock();
+        //CursorLock();
     }
 
     private void Update()
@@ -35,6 +35,21 @@ public class PlayerMovement : MonoBehaviour
         ApplyGravity();
         ApplyRotation();
         ApplyMovement();
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            if (Cursor.visible)
+            {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            else
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+
+        }
+
     }
 
     public void CursorLock(bool condition = true)

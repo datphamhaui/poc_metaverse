@@ -54,6 +54,18 @@ public class PlayerCharacter : NetworkBehaviour
     private AnimationController _animationController;
     [SerializeField] private GameObject _characterMeshObjects;
 
+    // Npc handle
+    private float interactionRange = 5.0f; // The range at which the player can interact with the NPC.
+    private GameObject npc; // The NPC GameObject.
+    //[SerializeField] private GameObject ;
+
+    bool IsNearNPC()
+    {
+        float distance = Vector3.Distance(transform.position, npc.transform.position);
+        return distance <= interactionRange;
+    }
+
+
     private void Awake()
     {
         _networkCulling = GetComponent<NetworkCulling>();
@@ -63,6 +75,7 @@ public class PlayerCharacter : NetworkBehaviour
         _networkCulling.updated += OnCullingUpdated;
         _vrUI = GameObject.Find("VR-UI");
         _cameraMain = Camera.main.gameObject;
+        npc = GameObject.Find("NPC_Character");
         if (_vrUI != null)
         {
             _vrUI.SetActive(false);
@@ -115,7 +128,7 @@ public class PlayerCharacter : NetworkBehaviour
 
     }
 
-    private void OpenVRUI() 
+    private void OpenVRUI()
     {
         if (_vrUI != null)
         {
@@ -147,6 +160,13 @@ public class PlayerCharacter : NetworkBehaviour
         {
             ProcessInput(input.Value);
         }
+
+        if (IsNearNPC())
+        {
+            //NPCController npcController = npc.GetComponent<NPCController>();
+            //dialogueText.text = npcController.dialogue;
+            Debug.Log("IsNearNPC");
+        }
     }
 
     private void ProcessInput(PlayerInputData input)
@@ -163,7 +183,7 @@ public class PlayerCharacter : NetworkBehaviour
         }
     }
 
-    private void InitBalllAndHub(PlayerInputData input) 
+    private void InitBalllAndHub(PlayerInputData input)
     {
         if (delay.ExpiredOrNotRunning(Runner))
         {
