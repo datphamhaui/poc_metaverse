@@ -7,7 +7,8 @@ public class PlayerHandleWithNPC : NetworkBehaviour
 {
 
     private float interactionRange = 3.0f; // The range at which the player can interact with the NPC.
-    private GameObject npc; // The NPC GameObject.
+    private Vector3 npcPosition; // The NPC GameObject.
+    private Transform npcHello; // The NPC GameObject.
     private GameObject chatNpcCanvas;
     private GameObject photonCanvas;
     GameObject camera;
@@ -16,7 +17,8 @@ public class PlayerHandleWithNPC : NetworkBehaviour
     protected void Awake()
     {
 
-        npc = GameObject.Find("NPC");
+        npcPosition = NPC.Instance.position;
+        npcHello = NPC.Instance.helloThereChild;
         chatNpcCanvas = GameObject.Find("ChatView");
         photonCanvas = GameObject.Find("PhotoChatCanvas");
         camera = GameObject.Find("FreeLook Camera");
@@ -42,7 +44,7 @@ public class PlayerHandleWithNPC : NetworkBehaviour
 
                 }
 
-                Transform textHello = npc.transform.Find("HelloThere");
+                Transform textHello = npcHello;
                 if (textHello)
                 {
                     if (!textHello.gameObject.activeSelf)
@@ -64,7 +66,7 @@ public class PlayerHandleWithNPC : NetworkBehaviour
             }
             else
             {
-                Transform textHello = npc.transform.Find("HelloThere");
+                Transform textHello = npcHello;
                 textHello.gameObject.SetActive(false);
                 chatNpcCanvas.transform.Find("PressToChat").gameObject.SetActive(false);
             }
@@ -83,7 +85,7 @@ public class PlayerHandleWithNPC : NetworkBehaviour
 
     bool IsNearNPC()
     {
-        float distance = Vector3.Distance(transform.position, npc.transform.position);
+        float distance = Vector3.Distance(transform.position, npcPosition);
         Debug.Log("distance: " + distance);
         Debug.Log(" transform.position: " + transform.position);
         Debug.Log("transform.position: " + transform.position);
