@@ -609,13 +609,13 @@ MonoBehaviour:
   - Clip: {fileID: 7400000, guid: 7d54f8bbd8d18d04892c27fe2f4de8d5, type: 2}
     Speed: 1
     Position: {x: 0, y: 0}
-  - Clip: {fileID: 7400000, guid: 1580c401b3fb0ca4bbd21db24c343671, type: 3}
+  - Clip: {fileID: 7400000, guid: 1e87a4d7b22a70f4491ea8ca62bc8ae1, type: 2}
     Speed: 1
     Position: {x: 0, y: 1}
   - Clip: {fileID: 7400000, guid: cd80916ad9725fb4eac7a21f1d7db46c, type: 2}
     Speed: 1
     Position: {x: 1, y: 0}
-  - Clip: {fileID: 7400000, guid: 1580c401b3fb0ca4bbd21db24c343671, type: 3}
+  - Clip: {fileID: 7400000, guid: 1e87a4d7b22a70f4491ea8ca62bc8ae1, type: 2}
     Speed: 1
     Position: {x: 0, y: -1}
   - Clip: {fileID: 7400000, guid: e76e0b9240e6d8c4382c789ee37ca61c, type: 2}
@@ -4675,6 +4675,7 @@ GameObject:
   - component: {fileID: 1203403717443897274}
   - component: {fileID: 1711067946661971289}
   - component: {fileID: 7042728752377375833}
+  - component: {fileID: 1573509643025482423}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -4756,6 +4757,7 @@ MonoBehaviour:
   - {fileID: 9139562756795560347}
   - {fileID: 1203403717443897274}
   - {fileID: 7042728752377375833}
+  - {fileID: 1573509643025482423}
   SimulationBehaviours:
   - {fileID: 9147526515605709520}
 --- !u!114 &4244463964700296495
@@ -4882,6 +4884,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 94b902010229f1746ab747a6ee0de130, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interpolationDataSource: 0
+--- !u!114 &1573509643025482423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7270730200671583752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74d60dc23a1d2e54abe2758e1e83ca5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _interpolationDataSource: 0
